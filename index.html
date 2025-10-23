@@ -186,6 +186,12 @@
             transform: translateX(-50%) translateY(-50%);
             z-index: -1;
             object-fit: cover;
+            opacity: 0;
+            transition: opacity 1.5s ease;
+        }
+
+        .hero-video.loaded {
+            opacity: 1;
         }
 
         .hero-overlay {
@@ -830,7 +836,7 @@
 
     <!-- Hero Section -->
     <section class="hero" id="hero">
-        <video autoplay muted loop playsinline class="hero-video">
+        <video autoplay muted loop playsinline class="hero-video" id="heroVideo">
             <source src="neo.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
@@ -1102,11 +1108,16 @@
             const mobileMenuToggle = document.getElementById('mobileMenuToggle');
             const nav = document.getElementById('nav');
             const hero = document.getElementById('hero');
+            const heroVideo = document.getElementById('heroVideo');
             
             // Apply lazy effect to hero section
             setTimeout(() => {
                 hero.classList.add('loaded');
+                heroVideo.classList.add('loaded');
             }, 100);
+            
+            // Ensure page loads at the top
+            window.scrollTo(0, 0);
             
             // Mobile menu toggle
             mobileMenuToggle.addEventListener('click', function() {
