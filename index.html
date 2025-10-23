@@ -155,16 +155,24 @@
             background-color: rgba(255, 255, 255, 0.1);
         }
 
-        /* Hero Section */
+        /* Hero Section - Updated with lazy effect */
         .hero {
             position: relative;
             padding: 80px 20px;
             text-align: center;
             overflow: hidden;
-            min-height: 80vh;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        .hero.loaded {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .hero-video {
@@ -814,14 +822,14 @@
                         <a href="#setup">Setup</a>
                         <a href="#terminal">Try Demo</a>
                     </div>
-                    <a href="#setup" class="cta-button">Get Started</a>
+                    <a href="https://nerdspace-hub-cr.vercel.app" class="cta-button">NerdSpace</a>
                 </nav>
             </div>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero" id="hero">
         <video autoplay muted loop playsinline class="hero-video">
             <source src="neo.mp4" type="video/mp4">
             Your browser does not support the video tag.
@@ -830,7 +838,7 @@
         <div class="hero-content">
             <h1>NEO AI Console</h1>
             <p>An advanced personal AI console with persistent memory, multi-model orchestration, and sophisticated reflection systems. Experience the power of contextual AI with continuous learning capabilities.</p>
-            <a href="#terminal" class="cta-button">Try Live Demo</a>
+            <a href="https://nerdspace-hub-cr.vercel.app" class="cta-button">NerdSpace</a>
         </div>
     </section>
 
@@ -1093,6 +1101,12 @@
             const matrixRain = document.getElementById('matrixRain');
             const mobileMenuToggle = document.getElementById('mobileMenuToggle');
             const nav = document.getElementById('nav');
+            const hero = document.getElementById('hero');
+            
+            // Apply lazy effect to hero section
+            setTimeout(() => {
+                hero.classList.add('loaded');
+            }, 100);
             
             // Mobile menu toggle
             mobileMenuToggle.addEventListener('click', function() {
