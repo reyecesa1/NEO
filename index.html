@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEO AI Console | Advanced Personal AI Assistant</title>
+    <title>NEO AI | Your Wise Old Friend</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
+        /* All your existing CSS styles remain exactly the same */
         :root {
             --primary: #00c853;
             --primary-dark: #009624;
@@ -800,13 +801,64 @@
             font-size: 14px;
             animation: matrixRain 5s linear infinite;
         }
+
+        /* Typewriter effect */
+        .typewriter {
+            overflow: hidden;
+            border-right: 2px solid var(--primary);
+            white-space: nowrap;
+            margin: 0 auto;
+            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--primary) }
+        }
+
+        /* Loading animations */
+        .loading-dots:after {
+            content: ' .';
+            animation: dots 1.5s steps(5, end) infinite;
+        }
+
+        @keyframes dots {
+            0%, 20% { color: rgba(0,0,0,0); text-shadow: .25em 0 0 rgba(0,0,0,0), .5em 0 0 rgba(0,0,0,0); }
+            40% { color: var(--primary); text-shadow: .25em 0 0 rgba(0,0,0,0), .5em 0 0 rgba(0,0,0,0); }
+            60% { text-shadow: .25em 0 0 var(--primary), .5em 0 0 rgba(0,0,0,0); }
+            80%, 100% { text-shadow: .25em 0 0 var(--primary), .5em 0 0 var(--primary); }
+        }
+
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 1s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        .slide-up {
+            transform: translateY(20px);
+            opacity: 0;
+            animation: slideUp 0.5s ease forwards;
+        }
+
+        @keyframes slideUp {
+            to { transform: translateY(0); opacity: 1; }
+        }
     </style>
 </head>
 <body>
     <!-- Matrix Rain Effect -->
     <div class="matrix-rain" id="matrixRain"></div>
 
-    <!-- Header - Updated to match Patch style -->
+    <!-- Header -->
     <header>
         <div class="container">
             <div class="header-content">
@@ -824,8 +876,8 @@
                 <nav class="nav" id="nav">
                     <div class="nav-links">
                         <a href="#features">Features</a>
-                        <a href="#models">Models</a>
-                        <a href="#setup">Setup</a>
+                        <a href="#models">How It Works</a>
+                        <a href="#setup">Get Started</a>
                         <a href="#terminal">Try Demo</a>
                     </div>
                     <a href="https://nerdspace-hub-cr.vercel.app" class="cta-button">NerdSpace</a>
@@ -842,8 +894,8 @@
         </video>
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1>NEO AI Console</h1>
-            <p>An advanced personal AI console with persistent memory, multi-model orchestration, and sophisticated reflection systems. Experience the power of contextual AI with continuous learning capabilities.</p>
+            <h1>NEO: Your Wise Old Friend</h1>
+            <p>Meet NEO, your wise old friend with two brains: one for chatting and one for thinking. He remembers, learns, and helps you through the toughest of tasks.</p>
             <a href="#terminal" class="cta-button">Try Live Demo</a>
         </div>
     </section>
@@ -853,7 +905,7 @@
         <div class="container">
             <div class="section-title">
                 <h2>Interactive Demo</h2>
-                <p>Experience NEO AI Console right in your browser. Type commands below to interact with the simulated AI.</p>
+                <p>Experience NEO AI right in your browser. Type "start" below to begin the demo.</p>
             </div>
 
             <div class="terminal-container">
@@ -869,11 +921,10 @@
                     <div class="terminal-output">
                         <div class="output-line matrix">NEO AI Console v2.1.0</div>
                         <div class="output-line matrix">Initializing advanced systems...</div>
-                        <div class="output-line system">Loading persistent memory module</div>
-                        <div class="output-line system">Model orchestration system active</div>
-                        <div class="output-line system">Context-aware routing initialized</div>
-                        <div class="output-line system">Reflection and learning systems online</div>
-                        <div class="output-line success">System ready. Type 'help' for available commands.</div>
+                        <div class="output-line system">Loading conversation brain</div>
+                        <div class="output-line system">Loading thinking brain</div>
+                        <div class="output-line system">Memory systems online</div>
+                        <div class="output-line success">System ready. Type 'start' to begin the demo.</div>
                     </div>
                     <div class="command-line">
                         <span class="prompt">user@neo:~$</span>
@@ -889,8 +940,8 @@
     <section class="features" id="features">
         <div class="container">
             <div class="section-title">
-                <h2>Advanced Features</h2>
-                <p>NEO is designed for sophisticated AI interactions with advanced capabilities.</p>
+                <h2>What Makes NEO Special</h2>
+                <p>NEO isn't just another AI - it's designed to be your personal companion that grows with you.</p>
             </div>
 
             <div class="features-grid">
@@ -898,48 +949,48 @@
                     <div class="feature-icon">
                         <i class="fas fa-brain"></i>
                     </div>
-                    <h3>Multi-Model Orchestration</h3>
-                    <p>Intelligently routes tasks between conversational (smollm2) and analytical (deepseek-r1) models based on context and requirements.</p>
+                    <h3>Two Brains Are Better Than One</h3>
+                    <p>NEO has both a chatty side for conversations and a thoughtful side for problem-solving, switching between them automatically based on what you need.</p>
                 </div>
 
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-memory"></i>
                     </div>
-                    <h3>Persistent Memory System</h3>
-                    <p>Maintains comprehensive session memory with categorized storage (MOOD, GOAL, NOTE, FEEDBACK, REFLECTION) across interactions.</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-exchange-alt"></i>
-                    </div>
-                    <h3>Context-Aware Routing</h3>
-                    <p>Automatically selects the optimal AI model based on task type, complexity, and user preferences for maximum effectiveness.</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-sync"></i>
-                    </div>
-                    <h3>Continuous Learning</h3>
-                    <p>Implements reflection mechanisms that allow the system to learn from interactions and improve responses over time.</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-desktop"></i>
-                    </div>
-                    <h3>Cross-Platform Synchronization</h3>
-                    <p>Maintains environment consistency across multiple development machines with seamless synchronization capabilities.</p>
+                    <h3>He Actually Remembers</h3>
+                    <p>Unlike most AI that forgets everything after your chat, NEO remembers your conversations, preferences, and what you've worked on together.</p>
                 </div>
 
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-user-cog"></i>
                     </div>
-                    <h3>Personalized Experience</h3>
-                    <p>Adapts to user preferences, interaction patterns, and specific use cases for a truly customized AI assistant.</p>
+                    <h3>Gets to Know You</h3>
+                    <p>The more you chat with NEO, the better it understands your style, preferences, and how you like to work.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Learns From Mistakes</h3>
+                    <p>When something doesn't go quite right, NEO reflects on it and improves for next time - just like a real friend would.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-desktop"></i>
+                    </div>
+                    <h3>Works Everywhere</h3>
+                    <p>Set up NEO on all your devices and it'll keep everything in sync, so you can pick up right where you left off.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Always There For You</h3>
+                    <p>Whether you're stuck on a problem at 3 AM or just need someone to bounce ideas off of, NEO is always available.</p>
                 </div>
             </div>
         </div>
@@ -949,8 +1000,8 @@
     <section class="models" id="models">
         <div class="container">
             <div class="section-title">
-                <h2>AI Models</h2>
-                <p>NEO orchestrates multiple specialized AI models for optimal performance.</p>
+                <h2>How NEO Works</h2>
+                <p>Think of NEO as having two specialized brains working together.</p>
             </div>
 
             <div class="models-grid">
@@ -958,36 +1009,36 @@
                     <div class="model-icon">
                         <i class="fas fa-comments"></i>
                     </div>
-                    <h3>SmollM2</h3>
-                    <p>Conversational specialist optimized for natural dialogue, emotional intelligence, and engaging interactions.</p>
-                    <div class="model-status status-active">Conversational</div>
+                    <h3>The Chatty Friend</h3>
+                    <p>This is the part of NEO that's great at conversations - understanding what you're saying, having natural chats, and being emotionally aware.</p>
+                    <div class="model-status status-active">Powered by SmollM2</div>
                 </div>
 
                 <div class="model-card">
                     <div class="model-icon">
                         <i class="fas fa-calculator"></i>
                     </div>
-                    <h3>DeepSeek-R1</h3>
-                    <p>Analytical powerhouse designed for complex reasoning, logical analysis, and technical problem-solving.</p>
-                    <div class="model-status status-online">Analytical</div>
-                </div>
-
-                <div class="model-card">
-                    <div class="model-icon">
-                        <i class="fas fa-project-diagram"></i>
-                    </div>
-                    <h3>Custom Models</h3>
-                    <p>Support for specialized fine-tuned models and experimental architectures for specific use cases.</p>
-                    <div class="model-status status-online">Expandable</div>
+                    <h3>The Thoughtful Friend</h3>
+                    <p>This is NEO's problem-solving side - great at logic, analysis, and working through complex tasks step by step.</p>
+                    <div class="model-status status-online">Powered by DeepSeek-R1</div>
                 </div>
 
                 <div class="model-card">
                     <div class="model-icon">
                         <i class="fas fa-random"></i>
                     </div>
-                    <h3>Dynamic Selection</h3>
-                    <p>Intelligent routing system that automatically selects the optimal model based on task requirements.</p>
+                    <h3>Smart Switching</h3>
+                    <p>NEO automatically decides which brain to use based on what you're asking - conversations go to the chatty side, complex problems to the thoughtful side.</p>
                     <div class="model-status status-active">Auto-Select</div>
+                </div>
+
+                <div class="model-card">
+                    <div class="model-icon">
+                        <i class="fas fa-history"></i>
+                    </div>
+                    <h3>Memory That Connects Everything</h3>
+                    <p>NEO's memory system keeps track of everything, so both brains have context about your previous conversations and work.</p>
+                    <div class="model-status status-online">Always Learning</div>
                 </div>
             </div>
         </div>
@@ -997,8 +1048,8 @@
     <section class="setup" id="setup">
         <div class="container">
             <div class="section-title">
-                <h2>Advanced Setup</h2>
-                <p>Get NEO AI Console running on your Windows system with these steps.</p>
+                <h2>Get Started With NEO</h2>
+                <p>Setting up NEO is easier than you might think. Just follow these steps.</p>
             </div>
 
             <div class="setup-steps">
@@ -1006,9 +1057,9 @@
                     <div class="step-number">1</div>
                     <div class="step-content">
                         <h3>Install Ollama</h3>
-                        <p>First, install Ollama on your Windows system to manage AI models.</p>
+                        <p>Ollama is like the engine that runs AI models on your computer. It's free and easy to install.</p>
                         <div class="code-block">
-                            <code># Download Ollama for Windows<br># Visit https://ollama.ai/download</code>
+                            <code># Download from https://ollama.ai<br># Choose your operating system and install</code>
                         </div>
                     </div>
                 </div>
@@ -1016,21 +1067,22 @@
                 <div class="setup-step">
                     <div class="step-number">2</div>
                     <div class="step-content">
-                        <h3>Download NEO Script</h3>
-                        <p>Download the NEO AI Console batch script to your preferred directory.</p>
+                        <h3>Download NEO's Brains</h3>
+                        <p>Once Ollama is installed, you need to download NEO's two specialized brains.</p>
                         <div class="code-block">
-                            <code># Download NEO batch script<br>curl -o neo-console.bat https://neo.ai/download/neo-console.bat</code>
+                            <code># Open terminal/command prompt and run:<br>ollama pull smollm2<br>ollama pull deepseek-r1</code>
                         </div>
+                        <p>This might take a few minutes depending on your internet speed.</p>
                     </div>
                 </div>
 
                 <div class="setup-step">
                     <div class="step-number">3</div>
                     <div class="step-content">
-                        <h3>Configure Models</h3>
-                        <p>Pull the required AI models using Ollama.</p>
+                        <h3>Get the NEO Interface</h3>
+                        <p>Download the NEO console interface that brings everything together in one place.</p>
                         <div class="code-block">
-                            <code># Pull conversation model<br>ollama pull smollm2<br><br># Pull analytical model<br>ollama pull deepseek-r1</code>
+                            <code># Download from our website<br># This gives you the cool terminal interface</code>
                         </div>
                     </div>
                 </div>
@@ -1038,11 +1090,12 @@
                 <div class="setup-step">
                     <div class="step-number">4</div>
                     <div class="step-content">
-                        <h3>Run NEO</h3>
-                        <p>Execute the batch script to start the NEO console with all advanced features.</p>
+                        <h3>Start Chatting!</h3>
+                        <p>Run the NEO interface and start having conversations with your new AI friend.</p>
                         <div class="code-block">
-                            <code># Run NEO console<br>neo-console.bat</code>
+                            <code># Double-click the NEO icon<br># Or run: ./neo-console</code>
                         </div>
+                        <p>That's it! You're now ready to experience NEO.</p>
                     </div>
                 </div>
             </div>
@@ -1055,7 +1108,7 @@
             <div class="footer-content">
                 <div class="footer-column">
                     <h3>NEO AI</h3>
-                    <p>An advanced personal AI console with persistent memory and multi-model orchestration.</p>
+                    <p>Your wise old friend with two brains. More than just an AI - a companion that grows with you.</p>
                     <div class="social-links">
                         <a href="#" class="social-link"><i class="fab fa-github"></i></a>
                         <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
@@ -1064,12 +1117,12 @@
                 </div>
 
                 <div class="footer-column">
-                    <h3>Resources</h3>
+                    <h3>Learn More</h3>
                     <ul class="footer-links">
-                        <li><a href="#">Documentation</a></li>
-                        <li><a href="#">Advanced Tutorials</a></li>
-                        <li><a href="#">API Reference</a></li>
-                        <li><a href="#">Developer Community</a></li>
+                        <li><a href="#">How NEO Works</a></li>
+                        <li><a href="#">Examples & Use Cases</a></li>
+                        <li><a href="#">Troubleshooting Guide</a></li>
+                        <li><a href="#">Community Tips</a></li>
                     </ul>
                 </div>
 
@@ -1079,7 +1132,7 @@
                         <li><a href="#">Windows</a></li>
                         <li><a href="#">macOS</a></li>
                         <li><a href="#">Linux</a></li>
-                        <li><a href="#">Docker</a></li>
+                        <li><a href="#">Mobile App (Coming Soon)</a></li>
                     </ul>
                 </div>
 
@@ -1088,14 +1141,14 @@
                     <ul class="footer-links">
                         <li><a href="#">GitHub</a></li>
                         <li><a href="#">Twitter</a></li>
-                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Community Forum</a></li>
                         <li><a href="#">Contact</a></li>
                     </ul>
                 </div>
             </div>
 
             <div class="footer-bottom">
-                <p>&copy; 2025 NEO AI Console. Created with ❤️ by Cesar Reyes.</p>
+                <p>&copy; 2025 NEO AI. Created with ❤️ by Cesar Reyes.</p>
             </div>
         </div>
     </footer>
@@ -1144,95 +1197,43 @@
             // Command history and responses
             const commandHistory = [];
             let historyIndex = -1;
+            let demoStarted = false;
             
             // Available commands and responses
             const commands = {
+                'start': '',
                 'help': `Available commands:
+  start - Begin the NEO demo experience
   help - Show this help message
-  about - Information about NEO AI
-  models - List available AI models
-  memory - Show memory system info
-  status - Display system status
-  reflect - Show reflection insights
-  clear - Clear the terminal
-  exit - Exit the console (in desktop version)`,
+  about - Learn about NEO
+  how - How NEO works in simple terms
+  clear - Clear the terminal`,
                 
-                'about': `NEO AI Console v2.1.0
-An advanced personal AI console with sophisticated capabilities.
+                'about': `NEO: Your Wise Old Friend
   
-Advanced Features:
-  - Multi-model AI orchestration (smollm2, deepseek-r1)
-  - Persistent memory with categorization
-  - Context-aware model routing
-  - Continuous learning and reflection systems
-  - Cross-platform synchronization
-  - Matrix-themed interface`,
+NEO is like having a friend with two brains:
+  - One brain is great at conversations and understanding you
+  - The other brain is amazing at solving problems and thinking deeply
+  
+The best part? NEO remembers our chats and learns from them, so he gets better at helping you over time.`,
                 
-                'models': `AI Model Orchestration:
+                'how': `Here's how NEO works in simple terms:
   
-1. SmollM2 (Conversational Specialist)
-   - Optimized for natural dialogue
-   - Emotional intelligence capabilities
-   - Engaging interaction patterns
+Imagine you have two friends:
+  1. A chatty friend who's great at conversations
+  2. A thoughtful friend who's amazing at solving problems
   
-2. DeepSeek-R1 (Analytical Specialist)
-   - Advanced reasoning capabilities
-   - Technical problem-solving
-   - Complex analysis tasks
+NEO automatically decides which friend to ask based on what you need. And he remembers everything you talk about, so he gets better at helping you over time!
   
-3. Dynamic Model Selection
-   - Automatic routing based on task type
-   - Context-aware model switching
-   - Performance optimization`,
-                
-                'memory': `Advanced Memory System:
-  
-NEO maintains comprehensive context with categorized memory:
-  
-  [MOOD] - Emotional state tracking and preference learning
-  [GOAL] - Current objectives, tasks, and progress tracking
-  [NOTE] - Important information, facts, and user preferences
-  [FEEDBACK] - System performance metrics and improvement areas
-  [REFLECTION] - Learning insights and adaptive behavior patterns
-  
-Type 'memory view' to see current session memory.`,
-                
-                'memory view': `Current Session Memory:
-  
-[GOAL] Demonstrate NEO AI Console advanced capabilities
-[NOTE] User is interacting with web demo version
-[FEEDBACK] System responding effectively to command inputs
-[REFLECTION] Web interface provides good simulation of desktop experience`,
-                
-                'status': `System Status:
-  
-  Memory Module: ONLINE
-  Model Orchestration: ACTIVE
-  Context Routing: OPERATIONAL
-  Reflection Systems: ENGAGED
-  Learning Protocols: ACTIVE
-  
-All systems functioning at optimal capacity.`,
-                
-                'reflect': `Reflection Insights:
-  
-Current session analysis indicates:
-  - User is exploring system capabilities
-  - Command patterns suggest technical proficiency
-  - Interaction style favors direct commands
-  - System adapting to user preferences
-  
-Learning systems actively updating interaction models.`,
+Type 'start' to see NEO in action!`,
                 
                 'clear': '', // Special case - handled separately
-                
-                'exit': 'This is a web demo. In the desktop version, this would exit the console.',
                 
                 '': '' // Handle empty input
             };
             
             // Default response for unknown commands
-            const defaultResponse = "Command not recognized. Type 'help' for available commands.";
+            const defaultResponse = "Hmm, I don't recognize that command. Type 'help' to see what you can do, or 'start' to begin the demo!";
             
             // Function to add output to terminal
             function addOutput(text, className = '') {
@@ -1241,6 +1242,41 @@ Learning systems actively updating interaction models.`,
                 outputLine.textContent = text;
                 terminalBody.insertBefore(outputLine, terminalBody.lastElementChild);
                 terminalBody.scrollTop = terminalBody.scrollHeight;
+            }
+            
+            // Function to type text with a typewriter effect
+            function typeText(text, className = '', speed = 30, callback = null) {
+                const outputLine = document.createElement('div');
+                outputLine.className = `output-line ${className}`;
+                terminalBody.insertBefore(outputLine, terminalBody.lastElementChild);
+                
+                let i = 0;
+                function typeChar() {
+                    if (i < text.length) {
+                        outputLine.textContent += text.charAt(i);
+                        i++;
+                        setTimeout(typeChar, speed);
+                        terminalBody.scrollTop = terminalBody.scrollHeight;
+                    } else if (callback) {
+                        callback();
+                    }
+                }
+                typeChar();
+            }
+            
+            // Function to show loading animation
+            function showLoading(text, duration = 1500, callback = null) {
+                const outputLine = document.createElement('div');
+                outputLine.className = 'output-line system';
+                outputLine.textContent = text;
+                outputLine.classList.add('loading-dots');
+                terminalBody.insertBefore(outputLine, terminalBody.lastElementChild);
+                terminalBody.scrollTop = terminalBody.scrollHeight;
+                
+                setTimeout(() => {
+                    outputLine.classList.remove('loading-dots');
+                    if (callback) callback();
+                }, duration);
             }
             
             // Function to process commands
@@ -1257,6 +1293,105 @@ Learning systems actively updating interaction models.`,
                     // Clear terminal except the last command line
                     const outputLines = document.querySelectorAll('.output-line');
                     outputLines.forEach(line => line.remove());
+                    return;
+                }
+                
+                // Handle start command (demo)
+                if (command === 'start' && !demoStarted) {
+                    demoStarted = true;
+                    
+                    // Clear terminal
+                    const outputLines = document.querySelectorAll('.output-line');
+                    outputLines.forEach(line => line.remove());
+                    
+                    // Start demo sequence
+                    setTimeout(() => {
+                        addOutput("Starting NEO demo...", "system");
+                        
+                        setTimeout(() => {
+                            showLoading("Initializing NEO's chatty brain", 1200, () => {
+                                setTimeout(() => {
+                                    showLoading("Initializing NEO's thinking brain", 1200, () => {
+                                        setTimeout(() => {
+                                            showLoading("Loading memory systems", 1200, () => {
+                                                setTimeout(() => {
+                                                    addOutput("All systems ready!", "success");
+                                                    
+                                                    setTimeout(() => {
+                                                        typeText("Hey there! I'm NEO.", "matrix", 40, () => {
+                                                            setTimeout(() => {
+                                                                typeText("Think of me as your wise old friend who's got two brains:", "", 40, () => {
+                                                                    setTimeout(() => {
+                                                                        typeText("", "", 40, () => {
+                                                                            setTimeout(() => {
+                                                                                typeText("• One brain for having conversations (like right now!)", "", 30, () => {
+                                                                                    setTimeout(() => {
+                                                                                        typeText("• Another brain for deep thinking when you need help with complex stuff", "", 30, () => {
+                                                                                            setTimeout(() => {
+                                                                                                typeText("", "", 30, () => {
+                                                                                                    setTimeout(() => {
+                                                                                                        typeText("I remember our past chats, so I can learn from them and help you better over time.", "", 40, () => {
+                                                                                                            setTimeout(() => {
+                                                                                                                typeText("", "", 40, () => {
+                                                                                                                    setTimeout(() => {
+                                                                                                                        typeText("Whether you're stuck on a problem, need a buddy to talk to, or want to explore new ideas...", "", 40, () => {
+                                                                                                                            setTimeout(() => {
+                                                                                                                                typeText("I'm here for you.", "matrix", 60, () => {
+                                                                                                                                    setTimeout(() => {
+                                                                                                                                        typeText("", "", 60, () => {
+                                                                                                                                            setTimeout(() => {
+                                                                                                                                                typeText("I'm not just a program; I'm designed to be a companion that grows with you.", "", 40, () => {
+                                                                                                                                                    setTimeout(() => {
+                                                                                                                                                        typeText("", "", 40, () => {
+                                                                                                                                                            setTimeout(() => {
+                                                                                                                                                                typeText("Cool, right? 😊", "matrix", 60, () => {
+                                                                                                                                                                    setTimeout(() => {
+                                                                                                                                                                        typeText("", "", 60, () => {
+                                                                                                                                                                            setTimeout(() => {
+                                                                                                                                                                                addOutput("Demo completed. Type 'about' to learn more or 'how' to understand how I work!", "success");
+                                                                                                                                                                            }, 500);
+                                                                                                                                                                        });
+                                                                                                                                                                    }, 500);
+                                                                                                                                                                });
+                                                                                                                                                            }, 500);
+                                                                                                                                                        });
+                                                                                                                                                    }, 500);
+                                                                                                                                                });
+                                                                                                                                            }, 500);
+                                                                                                                                        });
+                                                                                                                                    }, 500);
+                                                                                                                                });
+                                                                                                                            }, 500);
+                                                                                                                        });
+                                                                                                                    }, 500);
+                                                                                                                });
+                                                                                                            }, 500);
+                                                                                                        });
+                                                                                                    }, 500);
+                                                                                                });
+                                                                                            }, 500);
+                                                                                        });
+                                                                                    }, 500);
+                                                                                });
+                                                                            }, 500);
+                                                                        });
+                                                                    }, 500);
+                                                                });
+                                                            }, 500);
+                                                        });
+                                                    }, 1000);
+                                                }, 500);
+                                            });
+                                        }, 500);
+                                    });
+                                }, 500);
+                            });
+                        }, 500);
+                    }, 500);
+                    
+                    return;
+                } else if (command === 'start' && demoStarted) {
+                    addOutput("Demo already running! Type 'clear' to reset the terminal.", "system");
                     return;
                 }
                 
