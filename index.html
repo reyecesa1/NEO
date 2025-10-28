@@ -232,10 +232,40 @@
             max-width: 700px;
         }
 
-        /* Terminal Section */
+        /* Terminal Section - Updated with video background */
         .terminal-section {
+            position: relative;
             padding: 60px 0;
-            background: var(--bg-light);
+            overflow: hidden;
+        }
+
+        .terminal-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translateX(-50%) translateY(-50%);
+            z-index: -2;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1.5s ease;
+        }
+
+        .terminal-video.loaded {
+            opacity: 0.3; /* Adjust opacity as needed */
+        }
+
+        .terminal-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 10, 10, 0.8);
+            z-index: -1;
         }
 
         .section-title {
@@ -257,21 +287,22 @@
         }
 
         .terminal-container {
-            background: var(--bg);
+            background: rgba(10, 10, 10, 0.85);
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(0, 200, 83, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(0, 200, 83, 0.3);
             max-width: 900px;
             margin: 0 auto;
+            backdrop-filter: blur(5px);
         }
 
         .terminal-header {
-            background: rgba(0, 0, 0, 0.3);
+            background: rgba(0, 0, 0, 0.5);
             padding: 15px 20px;
             display: flex;
             align-items: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .terminal-buttons {
@@ -309,7 +340,7 @@
             padding: 20px;
             height: 400px;
             overflow-y: auto;
-            background: #050505;
+            background: rgba(5, 5, 5, 0.9);
             position: relative;
         }
 
@@ -900,8 +931,13 @@
         </div>
     </section>
 
-    <!-- Terminal Section -->
+    <!-- Terminal Section with Video Background -->
     <section class="terminal-section" id="terminal">
+        <video autoplay muted loop playsinline class="terminal-video" id="terminalVideo">
+            <source src="demoneo.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="terminal-overlay"></div>
         <div class="container">
             <div class="section-title">
                 <h2>Interactive Demo</h2>
@@ -1162,11 +1198,13 @@
             const nav = document.getElementById('nav');
             const hero = document.getElementById('hero');
             const heroVideo = document.getElementById('heroVideo');
+            const terminalVideo = document.getElementById('terminalVideo');
             
             // Apply lazy effect to hero section
             setTimeout(() => {
                 hero.classList.add('loaded');
                 heroVideo.classList.add('loaded');
+                terminalVideo.classList.add('loaded');
             }, 100);
             
             // Ensure page loads at the top
